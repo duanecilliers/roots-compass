@@ -29,7 +29,7 @@ module.exports = function (grunt) {
 		jshint: {
 			options: {
 				jshintrc: '.jshintrc',
-				ignores: ['assets/js/*.min.js']
+				ignores: ['assets/js/*.min.js', 'assets/js/_modernizr.js']
 			},
 			files: ['assets/js/*.js', 'assets/js/test/**/*.js'],
 			grunt: {
@@ -43,26 +43,26 @@ module.exports = function (grunt) {
 		},
 		modernizr: {
 			dists: {
-				devFile: "bower_components/modernizr/modernizr.js",
-				outputFile: "assets/js/_modernizr.js",
+				devFile: 'bower_components/modernizr/modernizr.js',
+				outputFile: 'assets/js/_modernizr.js',
 				// Based on default settings on http://modernizr.com/download/
 				extra: {
-					"shiv": true,
-					"printshiv": false,
-					"load": true,
-					"mq": false,
-					"cssclasses": true
+					'shiv': true,
+					'printshiv': false,
+					'load': true,
+					'mq': false,
+					'cssclasses': true
 				},
 				// Based on default settings on http://modernizr.com/download/
 				extensibility: {
-					"addtest": false,
-					"prefixed": false,
-					"teststyles": false,
-					"testprops": false,
-					"testallprops": false,
-					"hasevents": false,
-					"prefixes": false,
-					"domprefixes": false
+					'addtest': false,
+					'prefixed': false,
+					'teststyles': false,
+					'testprops': false,
+					'testallprops': false,
+					'hasevents': false,
+					'prefixes': false,
+					'domprefixes': false
 				},
 				files: {
 					src: ['assets/js/*.js', 'assets/sass/*.{scss,sass}']
@@ -73,9 +73,9 @@ module.exports = function (grunt) {
 			compile: {
 				options: {
 					baseUrl: './',
-					mainConfigFile: 'assets/js/_config.js',
-					name: 'bower_components/almond/almond.js',
-					out: 'assets/js/scripts.min.js',
+					mainConfigFile: './assets/js/_main.js',
+					name: './bower_components/almond/almond.js',
+					out: './assets/js/scripts.min.js',
 					done: function (done, output) {
 						var duplicates = require('rjs-build-analysis').duplicates(output);
 

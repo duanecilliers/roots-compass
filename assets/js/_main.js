@@ -1,63 +1,54 @@
-/* ========================================================================
- * DOM-based Routing
- * Based on http://goo.gl/EUTi53 by Paul Irish
- *
- * Only fires on body classes that match. If a body class contains a dash,
- * replace the dash with an underscore when adding it to the object below.
- *
- * .noConflict()
- * The routing is enclosed within an anonymous function so that you can
- * always reference jQuery with $, even when in .noConflict() mode.
- *
- * Google CDN, Latest jQuery
- * To use the default WordPress version of jQuery, go to lib/config.php and
- * remove or comment out: add_theme_support('jquery-cdn');
- * ======================================================================== */
+// Only the first require.config({}) is used in grunt-contrib-requirejs mainConfigFile
+// Use this only for r.js build configuration
+// @link https://github.com/jrburke/r.js/blob/master/build/example.build.js#L27
+require.config({
 
-(function($) {
+});
 
-// Use this variable to set up the common and page specific functions. If you
-// rename this variable, you will also need to rename the namespace below.
-var Roots = {
-	// All pages
-	common: {
-		init: function() {
-			// JavaScript to be fired on all pages
-		}
-	},
-	// Home page
-	home: {
-		init: function() {
-			// JavaScript to be fired on the home page
-		}
-	},
-	// About us page, note the change from about-us to about_us.
-	about_us: {
-		init: function() {
-			// JavaScript to be fired on the about us page
-		}
-	}
+// Load bower scripts into paths object
+// Require.js looks in the /assets/js dir by default
+var paths = {
+	main: 'assets/js/_main',
+	bootstrapAffix: 'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix',
+	bootstrapAlert: 'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert',
+	bootstrapButton: 'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/button',
+	bootstrapCarousel: 'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/carousel',
+	bootstrapCollapse: 'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse',
+	bootstrapDropdown: 'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown',
+	bootstrapPopover: 'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/popover',
+	bootstrapScrollspy: 'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/scrollspy',
+	bootstrapTab: 'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab',
+	bootstrapTooltip: 'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tooltip',
+	bootstrapTransition: 'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition',
+	bootstrapModal: 'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal'
 };
 
-// The routing fires all common scripts, followed by the page specific scripts.
-// Add additional events for more control over timing e.g. a finalize event
-var UTIL = {
-	fire: function(func, funcname, args) {
-		var namespace = Roots;
-		funcname = (funcname === undefined) ? 'init' : funcname;
-		if (func !== '' && namespace[func] && typeof namespace[func][funcname] === 'function') {
-			namespace[func][funcname](args);
-		}
-	},
-	loadEvents: function() {
-		UTIL.fire('common');
+// push jQuery onto paths object if not already enqueued by some plugin
+if (typeof jQuery === 'function') {
+	define('jquery', function () { return jQuery; });
+}
+else {
+	paths.jquery = 'bower_components/jquery/dist/jquery.min';
+}
 
-		$.each(document.body.className.replace(/-/g, '_').split(/\s+/),function(i,classnm) {
-			UTIL.fire(classnm);
-		});
+require.config({
+	paths: paths,
+	shim: {
+		// bootstrapAffix: { deps: ['jquery'] },
+		// bootstrapAlert: { deps: ['jquery'] },
+		// bootstrapButton: { deps: ['jquery'] },
+		// bootstrapCarousel: { deps: ['jquery'] },
+		// bootstrapCollapse: { deps: ['jquery', 'bootstrapTransition'] },
+		// bootstrapPopover: { deps: ['jquery', 'bootstrapTooltip'] },
+		// bootstrapScrollspy: { deps: ['jquery'] },
+		// bootstrapTab: { deps: ['jquery'] },
+		// bootstrapTooltip: { deps: ['jquery'] },
+		// bootstrapTransition: { deps: ['jquery'] },
+		// bootstrapTypeahead: { deps: ['jquery'] }
 	}
-};
+});
 
-$(document).ready(UTIL.loadEvents);
-
-})(jQuery); // Fully reference jQuery after this point.
+console.log('testing');
+require(['jquery', 'main'], function ($) {
+	console.log('It is working sir :)');
+});
