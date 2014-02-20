@@ -2,6 +2,8 @@
 
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
+## PLEASE NOTE! This project is not safe to use yet. If you're interested, please start or watch the repo.
+
 Roots Compass is a fork of [Roots](https://github.com/roots/roots) a WordPress starter theme based on [HTML5 Boilerplate](http://html5boilerplate.com/) & [Bootstrap](http://getbootstrap.com/) that will help you make better themes.
 
 * Original: [https://github.com/roots/roots](https://github.com/roots/roots)
