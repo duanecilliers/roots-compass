@@ -1,0 +1,9 @@
+{
+  "name": "roots-compass",
+  "version": "0.1.0",
+  "dependencies": {
+    "modernizr": "~2.7.0",
+    "almond": "~0.2.9",
+    "bootstrap-sass-official": "~3.1.1"
+  }
+}
