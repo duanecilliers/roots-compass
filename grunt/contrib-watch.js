@@ -7,11 +7,11 @@ module.exports = function (grunt) {
 		},
 		compass: {
 			files: ['assets/sass/*.{scss,sass}'],
-			tasks: [] // @TODO
+			tasks: ['compass:server', 'autoprefixer', 'cssmin']
 		},
 		scripts: {
 			files: ['assets/js/*.js', '!assets/js/*.min.js'],
-			tasks: ['jshint', 'requirejs'],
+			tasks: ['jshint', 'modernizr', 'requirejs'],
 			options: {
 				debounceDelay: 500
 			}

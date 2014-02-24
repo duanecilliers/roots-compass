@@ -4,7 +4,7 @@ module.exports = function (grunt) {
 	grunt.config('modernizr', {
 		dists: {
 			devFile: 'bower_components/modernizr/modernizr.js',
-			outputFile: 'assets/js/_modernizr.js',
+			outputFile: 'assets/js/vendor/modernizr.js',
 			// Based on default settings on http://modernizr.com/download/
 			extra: {
 				'shiv': true,
