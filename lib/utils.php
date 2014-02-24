@@ -12,3 +12,11 @@ function is_element_empty($element) {
 	$element = trim($element);
 	return empty($element) ? false : true;
 }
+
+function is_dev_mode() {
+	if ( defined( 'WP_ENV' ) && WP_ENV == 'development' ) {
+		return true;
+	} else {
+		return false;
+	}
+}

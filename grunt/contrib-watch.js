@@ -11,7 +11,8 @@ module.exports = function (grunt) {
 		},
 		scripts: {
 			files: ['assets/js/*.js', '!assets/js/*.min.js'],
-			tasks: ['jshint', 'modernizr', 'requirejs'],
+			// tasks: ['jshint', 'modernizr', 'requirejs'],
+			tasks: ['jshint', 'requirejs'],
 			options: {
 				debounceDelay: 500
 			}

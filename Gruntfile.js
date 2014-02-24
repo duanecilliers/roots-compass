@@ -12,10 +12,10 @@ module.exports = function (grunt) {
 	// Register alias tasks
 	grunt.registerTask('build',
 		'Build site files for testing or deployment.',
-		['jshint', 'compass', 'modernizr', 'requirejs', 'autoprefixer', 'cssmin', 'versioning']);
+		['jshint', 'compass', 'modernizr', 'requirejs', 'autoprefixer', 'cssmin', 'versioning', 'clean']);
 
 	grunt.registerTask('dev',
-		'Start a live-reloading and watch for file changes.',
+		'Start live-reloading and watch for file changes.',
 		['watch']);
 
 	grunt.registerTask('default', ['dev']);
