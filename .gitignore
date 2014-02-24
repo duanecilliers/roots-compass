@@ -4,3 +4,4 @@ node_modules
 .sass-cache
 assets/css/main.min.css.map
 bower_components
+assets/js/build

@@ -29,7 +29,7 @@ module.exports = function (grunt) {
 		jshint: {
 			options: {
 				jshintrc: '.jshintrc',
-				ignores: ['assets/js/*.min.js', 'assets/js/_modernizr.js']
+				ignores: ['assets/js/*.min.js', 'assets/js/modernizr.js']
 			},
 			files: ['assets/js/*.js', 'assets/js/test/**/*.js'],
 			grunt: {
@@ -72,10 +72,15 @@ module.exports = function (grunt) {
 		requirejs: {
 			compile: {
 				options: {
-					baseUrl: './',
-					mainConfigFile: './assets/js/_main.js',
-					name: './bower_components/almond/almond.js',
-					out: './assets/js/scripts.min.js',
+					baseUrl: '.',
+					mainConfigFile: 'assets/js/config/require.js',
+					deps: ['assets/js/app'],
+					insertRequire: ['assets/js/app'],
+					name: 'bower_components/almond/almond',
+					out: './assets/js/build/app.js',
+					optimize: 'uglify2',
+					generateSourceMaps: true,
+					preserveLicenseComments: false,
 					done: function (done, output) {
 						var duplicates = require('rjs-build-analysis').duplicates(output);
 
@@ -88,14 +93,6 @@ module.exports = function (grunt) {
 						done();
 					}
 				}
-			},
-			optimize: 'uglify',
-			uglify: {
-				toplevel: true,
-				ascii_only: true,
-				beautify: true,
-				max_line_length: 1000,
-				no_mange: true
 			}
 		}
 	});
